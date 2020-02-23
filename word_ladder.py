@@ -32,9 +32,6 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 
     with open(dictionary_file) as f:
         xs = f.readlines()
-  
-    for i in xs:
-        if(_adjacent(i, topofstack)):
     
     stack = []
     stack.append(start_word)
@@ -42,7 +39,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     q.append(stack)
     while(q!=[]):
         q.pop()
-        for a in xs:
+        for i in xs:
             if(_adjacent(xs[i], topofstack)):
                 if(xs[i] == end_word):
                     return stack + end_word
