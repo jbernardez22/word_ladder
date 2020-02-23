@@ -40,7 +40,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     while(q!=[]):
         q.pop()
         for i in range(len(xs)):
-            if(_adjacent(xs[i], stack.top())):
+            if(_adjacent(xs[i], stack[len(stack-1)]):
                 if(xs[i] == end_word):
                     return stack + end_word
                 stack_copy = copy.deepcopy(stack)
