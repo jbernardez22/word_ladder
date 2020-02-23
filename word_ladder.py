@@ -72,6 +72,8 @@ def verify_word_ladder(ladder):
     Returns True if each entry of the input list is adjacent to its neighbors;
     otherwise returns False.
     '''
+    if(ladder == []):
+        return False 
     for i in range(len(ladder)-1):
         word1 = ladder[i]
         word2 = ladder[i+1]
@@ -82,6 +84,6 @@ def verify_word_ladder(ladder):
     return True
 
 
-print(verify_word_ladder(['stone', 'shone', 'phone', 'phony', 'peony', 'penny', 'benny', 'bonny', 'boney', 'money']))
+#print(verify_word_ladder(['stone', 'shone', 'phone', 'phony', 'peony', 'penny', 'benny', 'bonny', 'boney', 'money']))
 #print(_adjacent('phone', 'phony'))
 #print(_adjacent('stone', 'money'))
