@@ -55,7 +55,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
                 q.appendleft(stack_copy)
                 xs.remove(xs[i])
                 
-
+i
 def _adjacent(word1, word2):
     '''
     Returns True if the input words differ by only a single character;
@@ -89,7 +89,7 @@ def verify_word_ladder(ladder):
         if(_adjacent(word1, word2)!=True):
             return False
     return True
-
+print("hello")
 
 #print(verify_word_ladder(['stone', 'shone', 'phone', 'phony', 'peony', 'penny', 'benny', 'bonny', 'boney', 'money']))
 #print(_adjacent('phone', 'phony'))
