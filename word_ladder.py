@@ -1,6 +1,7 @@
 #!/bin/python3
 
 from collections import deque 
+import copy
 
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     '''
@@ -32,20 +33,26 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 
     with open(dictionary_file) as f:
         xs = f.readlines()
-    
+    if(start_word == end_word):
+        return [start_word]
+
     stack = []
     stack.append(start_word)
     q = deque()
     q.append(stack)
+
     while(q!=[]):
-        q.pop()
-        for i in range(len(xs)):
-            if(_adjacent(xs[i], stack[len(stack-1)]):
-                if(xs[i] == end_word):
-                    return stack + end_word
-                stack_copy = copy.deepcopy(stack)
-                stack.append(xs[i])
-                q.append(stack_copy)
+        newq = q.pop()
+        for i in xs:
+            if(_adjacent(i, newq[-1]):
+                stack_copy = copy.deepcopy(newq)
+                stack_copy.append(i)
+                if(i == end_word):
+                    for j in range(1, len(stack_copy) -2):
+                        if _adjacent(edit[y-1], edit[y+1]):
+                        stackCopy.pop(y)
+                    return stack_copy
+                q.appendleft(stack_copy)
                 xs.remove(xs[i])
                 
 
