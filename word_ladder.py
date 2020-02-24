@@ -50,7 +50,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
                 if(i == end_word):
                     for j in range(1, len(stack_copy) -2):
                         if _adjacent(edit[y-1], edit[y+1]):
-                        stackCopy.pop(y)
+                             stack_copy.pop(y)
                     return stack_copy
                 q.appendleft(stack_copy)
                 xs.remove(xs[i])
