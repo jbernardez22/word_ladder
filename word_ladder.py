@@ -39,7 +39,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     stack = []
     stack.append(start_word)
     q = deque()
-    q.append(stack)
+    q.appendleft(stack)
 
     while(q!=[]):
         newq = q.pop()
