@@ -44,7 +44,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     while(q!=[]):
         newq = q.pop()
         for i in xs:
-            if(_adjacent(i, newq[-1]):
+            if(_adjacent(i, newq[-1])):
                 stack_copy = copy.deepcopy(newq)
                 stack_copy.append(i)
                 if(i == end_word):
@@ -55,7 +55,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
                 q.appendleft(stack_copy)
                 xs.remove(xs[i])
                 
-i
+
 def _adjacent(word1, word2):
     '''
     Returns True if the input words differ by only a single character;
