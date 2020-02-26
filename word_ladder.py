@@ -30,14 +30,18 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     Whenever it is impossible to generate a word ladder between the two words,
     the function returns `None`.
     '''
-
+    print("about to open file")
     with open(dictionary_file) as f:
         xs = f.readlines()
+    for i in range(len(xs)-1):
+        xs[i] = xs[i][0:-1]
     if(start_word == end_word):
         return [start_word]
+    print("opened file")
 
     stack = []
     stack.append(start_word)
+    print(stack)
     q = deque()
     q.appendleft(stack)
 
@@ -46,16 +50,15 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
         for i in xs:
             if(_adjacent(i, newq[-1])):  #confusedhere
                 if(i == end_word):
-                    return stack + i
+                    return stack.append(i)
                 stack_copy = copy.deepcopy(newq)
                 stack_copy.append(i)
                 q.appendleft(stack_copy)
                 xs.remove(i)
-              #  if(i == end_word):
-                  # for j in range(1, len(stack_copy) -2):
-                     #   if _adjacent(edit[y-1], edit[y+1]):
-                    #         stack_copy.pop(y)
-                   #  return stack_copy
+    print("exited loop")
+               
+                
+                 
                 
 
 def _adjacent(word1, word2):
@@ -91,7 +94,6 @@ def verify_word_ladder(ladder):
         if(_adjacent(word1, word2)!=True):
             return False
     return True
-print("hello")
 
 #print(verify_word_ladder(['stone', 'shone', 'phone', 'phony', 'peony', 'penny', 'benny', 'bonny', 'boney', 'money']))
 #print(_adjacent('phone', 'phony'))
