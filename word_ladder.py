@@ -40,8 +40,8 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 
     stack = []
     stack.append(start_word)
-    print("stack 1 = ", stack) # check
-    q = deque() # check
+    print("stack 1 = ", stack) 
+    q = deque()
     q.appendleft(stack)
     count = 0
     dicCount = 0
@@ -49,32 +49,14 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
         s = q.pop()
         print(s)
         xs_copy = copy.deepcopy(xs)
-        for i in xs_copy:
-            dicCount = dicCount + 1
-            if(_adjacent(i, s[-1])):  #confusedhere
-                count  = count + 1
+        for i in xs_copy: 
+            if(_adjacent(i, s[-1])):           
                 stack_copy = copy.deepcopy(s)
                 stack_copy.append(i)
-                if(i == end_word): #code not getting here, add print statements inside of while loop and for loop
-                    
-                    print(i, "end word")
-                   # print(q)
-                    print("stack:", stack)
-                   # stack.append(i)
-                    print("count" +str(count))
-                    print("diccount"+str(dicCount))
-                    print("stack after append", stack)
+                if(i == end_word):
                     return stack_copy
-               # stack_copy = copy.deepcopy(s)
-               # print("stack copy is", stack_copy, "i is", i)
-               # print(i)
-              #  stack_copy.append(i)
                 q.appendleft(stack_copy)
-              #  print(stack_copy)
                 xs.remove(i)
-    print("exited loop")
-               
-                
                  
                 
 def _adjacent(word1, word2):
@@ -116,7 +98,3 @@ def verify_word_ladder(ladder):
             return False
     return True
 
-#print(verify_word_ladder(['stone', 'shone', 'phone', 'phony', 'peony', 'penny', 'benny', 'bonny', 'boney', 'money']))
-#print(_adjacent('phone', 'phony')
-#print(_adjacent('bonny', 'money'))
-word_ladder('stone','money')
