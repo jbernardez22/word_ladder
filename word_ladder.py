@@ -45,11 +45,8 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     q.appendleft(stack)
     count = 0
     dicCount = 0
-   # while(q!=[]): # maybe different method
     while (q):
         s = q.pop()
-       # if (count > 5):#debug
-          #  return 0#debug
         print(s)
         xs_copy = copy.deepcopy(xs)
         for i in xs_copy:
@@ -90,6 +87,8 @@ def _adjacent(word1, word2):
     >>> _adjacent('stone','money')
     False
     '''
+    if(len(word1)!=len(word2)):
+        return False
     if(word1 == word2):
         return False
     count=0
