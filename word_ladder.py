@@ -30,37 +30,56 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     Whenever it is impossible to generate a word ladder between the two words,
     the function returns `None`.
     '''
-    print("about to open file")
+
     with open(dictionary_file) as f:
         xs = f.readlines()
     for i in range(len(xs)-1):
         xs[i] = xs[i][0:-1]
     if(start_word == end_word):
         return [start_word]
-    print("opened file")
 
     stack = []
     stack.append(start_word)
-    print(stack)
-    q = deque()
+    print("stack 1 = ", stack) # check
+    q = deque() # check
     q.appendleft(stack)
-
-    while(q!=[]):
-        newq = q.pop()
-        for i in xs:
-            if(_adjacent(i, newq[-1])):  #confusedhere
-                if(i == end_word):
-                    return stack.append(i)
-                stack_copy = copy.deepcopy(newq)
+    count = 0
+    dicCount = 0
+   # while(q!=[]): # maybe different method
+    while (q):
+        s = q.pop()
+       # if (count > 5):#debug
+          #  return 0#debug
+        print(s)
+        xs_copy = copy.deepcopy(xs)
+        for i in xs_copy:
+            dicCount = dicCount + 1
+            if(_adjacent(i, s[-1])):  #confusedhere
+                count  = count + 1
+                stack_copy = copy.deepcopy(s)
                 stack_copy.append(i)
+                if(i == end_word): #code not getting here, add print statements inside of while loop and for loop
+                    
+                    print(i, "end word")
+                   # print(q)
+                    print("stack:", stack)
+                   # stack.append(i)
+                    print("count" +str(count))
+                    print("diccount"+str(dicCount))
+                    print("stack after append", stack)
+                    return stack_copy
+               # stack_copy = copy.deepcopy(s)
+               # print("stack copy is", stack_copy, "i is", i)
+               # print(i)
+              #  stack_copy.append(i)
                 q.appendleft(stack_copy)
+              #  print(stack_copy)
                 xs.remove(i)
     print("exited loop")
                
                 
                  
                 
-
 def _adjacent(word1, word2):
     '''
     Returns True if the input words differ by only a single character;
@@ -71,13 +90,16 @@ def _adjacent(word1, word2):
     >>> _adjacent('stone','money')
     False
     '''
+    if(word1 == word2):
+        return False
     count=0
     for i in range(len(word1)):
         if word1[i] != word2[i]:
             count += 1
-        if(count>1):
-            return False
-    return True
+    if(count==1):
+        return True
+    else:
+        return False
 
 def verify_word_ladder(ladder):
     '''
@@ -96,5 +118,6 @@ def verify_word_ladder(ladder):
     return True
 
 #print(verify_word_ladder(['stone', 'shone', 'phone', 'phony', 'peony', 'penny', 'benny', 'bonny', 'boney', 'money']))
-#print(_adjacent('phone', 'phony'))
-#print(_adjacent('stone', 'money'))
+#print(_adjacent('phone', 'phony')
+#print(_adjacent('bonny', 'money'))
+word_ladder('stone','money')
